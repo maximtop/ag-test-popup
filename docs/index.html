@@ -27,22 +27,56 @@
             <h2>Link target blank</h2>
             <a target="_blank" href="http://example.org">example.org</a>
         </div>
+    </div>
+
+    <div class="row">
         <div class="col">
-            <h2>Link opened with JS</h2>
-            <div class="js-link"></div>
+            <h2>Link opened with JS window.open('http://example.org')</h2>
+            <div class="js-link-no-options"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h2>Link opened with JS window.open('http://example.org', '_blank')</h2>
+            <div class="js-link-blank"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h2>Link opened with JS window.open('http://example.org', 'new window')</h2>
+            <div class="js-link-name-new-window"></div>
         </div>
     </div>
 </div>
 
 <script>
-    const div = document.querySelector('.js-link');
-    const link = document.createElement('a');
-    link.setAttribute('href', '#');
-    link.innerText = 'example.org';
-    div.appendChild(link);
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.open('http://example.org');
+    const linkOptions = [
+        {
+            selector: '.js-link-no-options',
+        },
+        {
+            selector: '.js-link-blank',
+            options: '_blank',
+        },
+        {
+            selector: '.js-link-name-new-window',
+            options: 'new window',
+        }
+    ];
+
+    linkOptions.forEach(({ selector, options }) => {
+        const div = document.querySelector(selector);
+        const link = document.createElement('a');
+        link.setAttribute('href', '#');
+        link.innerText = 'example.org';
+        div.appendChild(link);
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log(options);
+            window.open('http://example.org', options);
+        });
     });
 </script>
 </body>
