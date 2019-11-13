@@ -49,9 +49,30 @@
             <div class="js-link-name-new-window"></div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col">
+            <h2>Link opened with JS window.open('about:blank', 'title1')</h2>
+            <div class="js-link-name-new-window-blank"></div>
+        </div>
+    </div>
 </div>
 
 <script>
+
+    const div = document.querySelector('.js-link-name-new-window-blank');
+    const link = document.createElement('a');
+    link.setAttribute('href', '#');
+    link.innerText = 'example.org';
+    div.appendChild(link);
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const popup = window.open('about:blank', 'ioxt', 'width=1024,height=768,left=90,top=76,status=0,location=0,toolbar=0,menubar=0,resizable=1,scrollbars=1');
+        popup.focus();
+        popup.open('http://example.org', 'ioxt');
+    });
+
+
     const linkOptions = [
         {
             selector: '.js-link-no-options',
