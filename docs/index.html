@@ -52,7 +52,7 @@
 
     <div class="row">
         <div class="col">
-            <h2>Link opened with JS window.open('about:blank', 'title1')</h2>
+            <h2>Link opened with JS window.open('about:blank', 'title') > window.open('http://example.org', 'title')</h2>
             <div class="js-link-name-new-window-blank"></div>
         </div>
     </div>
@@ -67,9 +67,9 @@
     div.appendChild(link);
     link.addEventListener('click', (e) => {
         e.preventDefault();
-        const popup = window.open('about:blank', 'ioxt', 'width=1024,height=768,left=90,top=76,status=0,location=0,toolbar=0,menubar=0,resizable=1,scrollbars=1');
+        const popup = window.open('about:blank', 'title', 'width=1024,height=768,left=90,top=76,status=0,location=0,toolbar=0,menubar=0,resizable=1,scrollbars=1');
         popup.focus();
-        popup.open('http://example.org', 'ioxt');
+        popup.open('https://twitter.com/home', 'title');
     });
 
 
