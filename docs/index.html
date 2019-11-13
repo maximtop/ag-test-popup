@@ -63,13 +63,13 @@
     const div = document.querySelector('.js-link-name-new-window-blank');
     const link = document.createElement('a');
     link.setAttribute('href', '#');
-    link.innerText = 'twitter.com';
+    link.innerText = 'example.org';
     div.appendChild(link);
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const popup = window.open('about:blank', 'title', 'width=1024,height=768,left=90,top=76,status=0,location=0,toolbar=0,menubar=0,resizable=1,scrollbars=1');
         popup.focus();
-        popup.open('https://twitter.com/home', 'title');
+        popup.open('http://example.org', 'title');
     });
 
 
